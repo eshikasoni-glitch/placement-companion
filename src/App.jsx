@@ -1,5 +1,5 @@
 import { MessageThreadPanel } from "./components/tambo/message-thread-panel";
-import SkillChecklist from "./components/tambo/SkillChecklist";
+import SkillChecklist from "./components/SkillChecklist";
 
 export default function App() {
   return (
