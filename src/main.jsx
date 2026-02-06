@@ -1,13 +1,15 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { TamboClientProvider, TamboProvider } from '@tambo-ai/react'
+import { TamboProvider } from '@tambo-ai/react'
+import { components } from './tambo/registry'
 
 createRoot(document.getElementById('root')).render(
-  <TamboProvider>
-    <TamboClientProvider>
+  <TamboProvider 
+    apiKey={import.meta.env.VITE_TAMBO_API_KEY}
+    components={components}
+    >
     <App />
-    </TamboClientProvider>
     </TamboProvider>
 )
+console.log("TAMBO KEY:", import.meta.env.VITE_TAMBO_API_KEY);
