@@ -1,46 +1,37 @@
 import { MessageThreadPanel } from "./components/tambo/message-thread-panel";
-import Timeline from "./components/Timeline";
 import ProgressSummary from "./components/ProgressSummary";
 import FocusCard from "./components/FocusCard";
+import SkillChecklist from "./components/SkillChecklist";
+import TaskBoard from "./components/TaskBoard";
+import RoadmapTracker from "./components/RoadmapTracker";
 import { useState } from "react";
 
 export default function App() {
-  const [activeView, setActiveView] = useState("focus");
+  const [stage, setStage] = useState("skills");
 
   return (
-    <div className="w-full flex">
-      {/* Left: Chat */}
+    <div className="flex h-screen w-full overflow-hidden">
+      {/* Left: Chat (Tambo handles message rendering) */}
       <MessageThreadPanel />
 
       {/* Right: Workspace */}
-      <div className="flex-1 p-6">
-        {/* TEMP DEV BUTTONS */}
-        <div className="mb-6 flex gap-3">
-          <button
-            onClick={() => setActiveView("focus")}
-            className="px-3 py-1 border border-neutral-300 rounded"
-          >
-            Focus
-          </button>
-          <button
-            onClick={() => setActiveView("timeline")}
-            className="px-3 py-1 border border-neutral-300 rounded"
-          >
-            Timeline
-          </button>
-          <button
-            onClick={() => setActiveView("progress")}
-            className="px-3 py-1 border border-neutral-300 rounded"
-          >
-            Progress
-          </button>
-        </div>
+      {/* <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        {stage === "skills" && (
+          <SkillChecklist onGenerate={() => setStage("roadmap")} />
+        )}
 
-        {/* CONDITIONAL RENDERING */}
-        {activeView === "focus" && <FocusCard />}
-        {activeView === "timeline" && <Timeline />}
-        {activeView === "progress" && <ProgressSummary />}
-      </div>
+        {stage === "roadmap" && (
+          <RoadmapTracker onStartExecution={() => setStage("execute")} />
+        )}
+
+        {stage === "execute" && (
+          <>
+            <FocusCard />
+            <TaskBoard />
+            <ProgressSummary />
+          </>
+        )}
+      </div> */}
     </div>
   );
 }
